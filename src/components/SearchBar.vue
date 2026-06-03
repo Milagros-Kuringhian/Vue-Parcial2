@@ -1,16 +1,32 @@
 <template>
-  <v-row class="mb-4">
-    <v-col cols="12" sm="8" md="6">
+  <v-row class="search-toolbar mb-3" dense>
+    <v-col cols="12" sm="5" md="5">
       <v-text-field
         v-model="texto"
-        label="Buscar películas por título"
-        variant="outlined"
+        placeholder="Buscar por título…"
+        prepend-inner-icon="mdi-magnify"
+        density="compact"
+        clearable
         hide-details
+        single-line
         @keyup.enter="buscar"
+        @click:clear="limpiar"
       />
     </v-col>
-    <v-col cols="12" sm="4" md="2" class="d-flex align-center">
-      <v-btn color="primary" block @click="buscar">Buscar</v-btn>
+    <v-col cols="12" sm="4" md="5">
+      <slot />
+    </v-col>
+    <v-col cols="12" sm="3" md="2" class="d-flex align-center">
+      <v-btn
+        class="search-toolbar__btn"
+        color="primary"
+        variant="tonal"
+        block
+        prepend-icon="mdi-magnify"
+        @click="buscar"
+      >
+        Buscar
+      </v-btn>
     </v-col>
   </v-row>
 </template>
@@ -18,13 +34,18 @@
 <script setup>
 import { ref } from 'vue'
 
-const emit = defineEmits(['buscar'])
+const emit = defineEmits(['buscar', 'limpiar'])
 
 const texto = ref('')
 
 function buscar() {
-  if (texto.value.trim()) {
+  if (texto.value && texto.value.trim()) {
     emit('buscar', texto.value.trim())
   }
+}
+
+function limpiar() {
+  texto.value = ''
+  emit('limpiar')
 }
 </script>

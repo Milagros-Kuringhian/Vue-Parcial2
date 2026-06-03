@@ -49,11 +49,3 @@ export function descubrirPorGenero(genreId) {
     return data.results
   })
 }
-
-export function descubrirPorClasificacion(certificacion) {
-  return pedir(
-    '/discover/movie?certification_country=US&certification=' + certificacion + '&'
-  ).then(function (data) {
-    return data.results
-  })
-}

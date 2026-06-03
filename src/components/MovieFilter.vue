@@ -1,22 +1,16 @@
 <template>
-  <v-row class="mb-4">
-    <v-col cols="12" sm="6" md="4">
-      <v-select
-        v-model="generoSeleccionado"
-        :items="generos"
-        item-title="name"
-        item-value="id"
-        label="Filtrar por género"
-        variant="outlined"
-        clearable
-        hide-details
-        @update:model-value="filtrar"
-      />
-    </v-col>
-    <v-col cols="12" sm="4" md="2" class="d-flex align-center">
-      <v-btn variant="outlined" block @click="limpiar">Ver populares</v-btn>
-    </v-col>
-  </v-row>
+  <v-select
+    v-model="generoSeleccionado"
+    :items="generos"
+    item-title="name"
+    item-value="id"
+    placeholder="Género"
+    prepend-inner-icon="mdi-theater"
+    density="compact"
+    clearable
+    hide-details
+    @update:model-value="filtrar"
+  />
 </template>
 
 <script setup>
@@ -31,12 +25,9 @@ const generoSeleccionado = ref(null)
 function filtrar(valor) {
   if (valor) {
     emit('filtrar', valor)
+  } else {
+    emit('limpiar')
   }
-}
-
-function limpiar() {
-  generoSeleccionado.value = null
-  emit('limpiar')
 }
 
 onMounted(function () {
