@@ -1,15 +1,7 @@
 <template>
   <v-main>
     <v-container>
-      <div class="d-flex align-center mb-4 page-header">
-        <div class="page-header__icon mr-3">
-          <v-icon :icon="iconoTitulo" color="primary" />
-        </div>
-        <div>
-          <h1 class="text-h6 font-weight-medium mb-0">{{ titulo }}</h1>
-          <p class="text-caption text-medium-emphasis mb-0">{{ subtitulo }}</p>
-        </div>
-      </div>
+      <h1 class="text-h5 mb-4">Películas</h1>
 
       <SearchBar @buscar="buscarPorTitulo" @limpiar="cargarPopulares">
         <MovieFilter
@@ -26,7 +18,6 @@
         v-if="!cargando && !error && peliculas.length === 0"
         type="info"
         variant="tonal"
-        icon="mdi-movie-search"
         class="mb-4"
       >
         No se encontraron películas.
@@ -49,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import {
   obtenerPopulares,
   buscarPeliculas,
@@ -62,30 +53,10 @@ import MovieCard from '@/components/MovieCard.vue'
 const peliculas = ref([])
 const cargando = ref(false)
 const error = ref('')
-const modo = ref('populares')
-
-const titulos = {
-  populares: { titulo: 'Películas populares', subtitulo: 'Lo más visto en este momento', icono: 'mdi-fire' },
-  busqueda: { titulo: 'Resultados de búsqueda', subtitulo: 'Películas que coinciden con tu búsqueda', icono: 'mdi-magnify' },
-  genero: { titulo: 'Filtradas por género', subtitulo: 'Películas del género seleccionado', icono: 'mdi-theater' },
-}
-
-const titulo = computed(function () {
-  return titulos[modo.value].titulo
-})
-
-const subtitulo = computed(function () {
-  return titulos[modo.value].subtitulo
-})
-
-const iconoTitulo = computed(function () {
-  return titulos[modo.value].icono
-})
 
 function cargarPopulares() {
   cargando.value = true
   error.value = ''
-  modo.value = 'populares'
 
   obtenerPopulares()
     .then(function (lista) {
@@ -102,7 +73,6 @@ function cargarPopulares() {
 function buscarPorTitulo(texto) {
   cargando.value = true
   error.value = ''
-  modo.value = 'busqueda'
 
   buscarPeliculas(texto)
     .then(function (lista) {
@@ -119,7 +89,6 @@ function buscarPorTitulo(texto) {
 function filtrarPorGenero(genreId) {
   cargando.value = true
   error.value = ''
-  modo.value = 'genero'
 
   descubrirPorGenero(genreId)
     .then(function (lista) {

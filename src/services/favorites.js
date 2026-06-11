@@ -7,7 +7,6 @@ export function obtenerFavoritos() {
 
 export function guardarFavoritos(lista) {
   localStorage.setItem(CLAVE, JSON.stringify(lista))
-  window.dispatchEvent(new Event('favoritos-actualizados'))
 }
 
 export function agregarFavorito(pelicula) {

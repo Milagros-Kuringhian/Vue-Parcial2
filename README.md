@@ -67,3 +67,7 @@ pnpm build
 5. Favoritos con localStorage
 6. Interfaz mobile first con Vuetify
 7. Datos con `fetch` a TMDB
+
+## Reglas del proyecto
+
+Guía definitiva de arquitectura y convenciones: [`docs/RULES.md`](../docs/RULES.md)

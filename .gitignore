@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+package-lock.json
 dist
 dist-ssr
 *.local
@@ -16,10 +17,6 @@ dist-ssr
 .env
 .env.local
 .env.*.local
-
-# Consignas y reglas del parcial (solo local)
-docs/CONSIGNAS.md
-docs/RULES.md
 
 # Editor
 .vscode/*
