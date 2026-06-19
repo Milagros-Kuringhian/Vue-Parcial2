@@ -1,13 +1,16 @@
 <template>
-  <v-row class="mb-4" dense>
+  <v-row class="search-toolbar mb-3" dense>
     <v-col cols="12" sm="5" md="5">
       <v-text-field
         v-model="texto"
-        label="Buscar por título"
+        placeholder="Buscar por título…"
         prepend-inner-icon="mdi-magnify"
-        density="compact"
+        :variant="fieldDefaults.variant"
+        :density="fieldDefaults.density"
+        :rounded="fieldDefaults.rounded"
         clearable
         hide-details
+        single-line
         @keyup.enter="buscar"
         @click:clear="limpiar"
       />
@@ -16,7 +19,14 @@
       <slot />
     </v-col>
     <v-col cols="12" sm="3" md="2" class="d-flex align-center">
-      <v-btn color="primary" block @click="buscar">
+      <v-btn
+        class="search-toolbar__btn"
+        color="primary"
+        :variant="designProps.searchBtnVariant"
+        block
+        prepend-icon="mdi-magnify"
+        @click="buscar"
+      >
         Buscar
       </v-btn>
     </v-col>
@@ -24,17 +34,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useDesignFormat } from '@/composables/useVisualTheme.js'
 
 const emit = defineEmits(['buscar', 'limpiar'])
+
+const { designProps, designVuetify } = useDesignFormat()
+
+const fieldDefaults = computed(function () {
+  return designVuetify.value.VTextField
+})
 
 const texto = ref('')
 
 function buscar() {
   if (texto.value && texto.value.trim()) {
     emit('buscar', texto.value.trim())
-  } else {
-    emit('limpiar')
   }
 }
 

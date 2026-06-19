@@ -6,7 +6,9 @@
     item-value="id"
     placeholder="Género"
     prepend-inner-icon="mdi-theater"
-    density="compact"
+    :variant="selectDefaults.variant"
+    :density="selectDefaults.density"
+    :rounded="selectDefaults.rounded"
     clearable
     hide-details
     @update:model-value="filtrar"
@@ -14,10 +16,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { obtenerGeneros } from '@/services/tmdb.js'
+import { computed, ref, onMounted } from 'vue'
+import { obtenerGeneros } from '@/services/peliculas.js'
+import { useDesignFormat } from '@/composables/useVisualTheme.js'
 
 const emit = defineEmits(['filtrar', 'limpiar'])
+
+const { designVuetify } = useDesignFormat()
+
+const selectDefaults = computed(function () {
+  return designVuetify.value.VSelect
+})
 
 const generos = ref([])
 const generoSeleccionado = ref(null)

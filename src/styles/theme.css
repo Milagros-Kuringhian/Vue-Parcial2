@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+:root,
+[data-theme='dark'] {
+  --app-primary-rgb: 229, 9, 20;
+  --app-gradient: #141414;
+  --app-card-bg: #1f1f1f;
+  --app-card-bg-soft: #2a2a2a;
+  --app-header-icon-bg: #333333;
+  --app-header-icon-border: rgba(229, 9, 20, 0.2);
+  --app-card-shadow: rgba(0, 0, 0, 0.2);
+  --app-card-shadow-soft: rgba(0, 0, 0, 0.12);
+  --app-card-backdrop-blur: 0px;
+  --app-card-border-color: #333333;
+  --app-card-border-color-hover: rgba(229, 9, 20, 0.4);
+  --app-card-border-width: 1px;
+  --app-card-hover-transform: none;
+  --app-card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --app-header-border-radius: 10px;
+  --app-card-border-radius: 12px;
+  --app-navbar-bg: rgba(20, 20, 20, 0.88);
+  --app-navbar-border: rgba(229, 9, 20, 0.18);
+  --app-navbar-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='light'] {
+  --app-primary-rgb: 220, 38, 38;
+  --app-gradient: #fafafa;
+  --app-card-bg: #ffffff;
+  --app-card-bg-soft: #f5f5f5;
+  --app-header-icon-bg: #e5e5e5;
+  --app-header-icon-border: rgba(220, 38, 38, 0.2);
+  --app-card-shadow: rgba(0, 0, 0, 0.12);
+  --app-card-shadow-soft: rgba(0, 0, 0, 0.08);
+  --app-card-backdrop-blur: 0px;
+  --app-card-border-color: #e5e5e5;
+  --app-card-border-color-hover: rgba(220, 38, 38, 0.4);
+  --app-card-border-width: 1px;
+  --app-card-hover-transform: none;
+  --app-card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --app-header-border-radius: 10px;
+  --app-card-border-radius: 12px;
+  --app-navbar-bg: rgba(255, 255, 255, 0.92);
+  --app-navbar-border: rgba(220, 38, 38, 0.15);
+  --app-navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+html,
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+.v-application {
+  background: var(--app-gradient) !important;
+  background-attachment: fixed !important;
+}
+
+.page-header {
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--app-card-border-radius);
+  background: linear-gradient(
+    120deg,
+    rgba(var(--app-primary-rgb), 0.1) 0%,
+    rgba(var(--app-primary-rgb), 0.03) 45%,
+    transparent 100%
+  );
+  border: 1px solid rgba(var(--app-primary-rgb), 0.14);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.page-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(var(--app-primary-rgb), 0.28) 0%,
+    rgba(var(--app-primary-rgb), 0.1) 100%
+  );
+  border: 1px solid rgba(var(--app-primary-rgb), 0.35);
+  box-shadow:
+    0 0 0 1px rgba(var(--app-primary-rgb), 0.08),
+    0 6px 18px rgba(var(--app-primary-rgb), 0.18);
+}
+
+.page-header__icon .v-icon {
+  font-size: 24px !important;
+}
+
+.page-header__text {
+  min-width: 0;
+}
+
+.page-header__title {
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.page-header__subtitle {
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(var(--v-theme-on-surface), 0.65);
+  letter-spacing: 0.01em;
+}
+
+/* Barra de búsqueda */
+.search-toolbar .v-field__prepend-inner > .v-icon {
+  font-size: 18px;
+  opacity: 0.55;
+}
+
+.search-toolbar .v-btn {
+  letter-spacing: 0;
+  font-weight: 500;
+  text-transform: none;
+}
+
+.search-toolbar__btn {
+  min-height: 40px !important;
+  font-weight: 600 !important;
+}
+
+.app-surface-card {
+  background: var(--app-card-bg) !important;
+  border-color: var(--app-card-border-color) !important;
+  border-width: var(--app-card-border-width, 1px) !important;
+  border-radius: var(--app-card-border-radius, 12px) !important;
+  backdrop-filter: blur(var(--app-card-backdrop-blur, 0));
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.app-surface-card:hover {
+  transform: var(--app-card-hover-transform, none);
+  box-shadow: var(--app-card-hover-shadow, none);
+  border-color: var(--app-card-border-color-hover) !important;
+}

@@ -1,9 +1,19 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Películas Vue</title>
+    <script>
+      try {
+        var temaGuardado = localStorage.getItem('peliculas-theme')
+        if (temaGuardado) {
+          document.documentElement.dataset.theme = temaGuardado
+        }
+      } catch (error) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
