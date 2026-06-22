@@ -69,6 +69,12 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
+@media (max-width: 599px) {
+  .page-header {
+    margin-bottom: 2rem;
+  }
+}
+
 .page-header__icon {
   display: flex;
   align-items: center;
@@ -115,6 +121,17 @@ body {
 .search-toolbar .v-field__prepend-inner > .v-icon {
   font-size: 18px;
   opacity: 0.55;
+}
+
+@media (max-width: 599px) {
+  .search-toolbar > .search-toolbar__col {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .search-toolbar > .search-toolbar__col + .search-toolbar__col {
+    padding-top: 1rem;
+  }
 }
 
 .search-toolbar .v-btn {

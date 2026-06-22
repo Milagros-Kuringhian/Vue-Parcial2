@@ -1,6 +1,6 @@
 <template>
-  <v-row class="search-toolbar mb-3" dense>
-    <v-col cols="12" sm="5" md="5">
+  <v-row class="search-toolbar mb-4 mb-sm-3">
+    <v-col cols="12" sm="5" md="5" class="search-toolbar__col">
       <v-text-field
         v-model="texto"
         placeholder="Buscar por título…"
@@ -15,10 +15,10 @@
         @click:clear="limpiar"
       />
     </v-col>
-    <v-col cols="12" sm="4" md="5">
+    <v-col cols="12" sm="4" md="5" class="search-toolbar__col">
       <slot />
     </v-col>
-    <v-col cols="12" sm="3" md="2" class="d-flex align-center">
+    <v-col cols="12" sm="3" md="2" class="search-toolbar__col d-flex align-center">
       <v-btn
         class="search-toolbar__btn"
         color="primary"

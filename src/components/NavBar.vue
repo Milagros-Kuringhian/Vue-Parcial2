@@ -21,7 +21,7 @@ const navItems = [
       @click.stop="mostrar = !mostrar"
     />
 
-    <RouterLink to="/" class="app-navbar__brand text-decoration-none d-none d-md-inline-flex">
+    <RouterLink to="/" class="app-navbar__brand text-decoration-none">
       <AppBrandLogo />
     </RouterLink>
 
@@ -55,10 +55,6 @@ const navItems = [
   </v-app-bar>
 
   <v-navigation-drawer v-model="mostrar" temporary class="app-navbar__drawer">
-    <div class="app-navbar__drawer-header">
-      <AppBrandLogo size="lg" />
-    </div>
-
     <v-list nav class="app-navbar__drawer-list">
       <v-list-item
         v-for="item in navItems"
@@ -83,6 +79,7 @@ const navItems = [
 }
 
 .app-navbar :deep(.v-toolbar__content) {
+  position: relative;
   overflow: hidden;
   padding-left: 1rem;
 }
@@ -98,9 +95,24 @@ const navItems = [
   align-items: center;
   flex-shrink: 1;
   min-width: 0;
-  margin-left: 0.5rem;
   color: inherit;
   transition: opacity 0.2s ease;
+}
+
+@media (max-width: 959px) {
+  .app-navbar__brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+}
+
+@media (min-width: 960px) {
+  .app-navbar__brand {
+    margin-left: 0.5rem;
+  }
 }
 
 .app-navbar__brand:hover {
@@ -138,15 +150,8 @@ const navItems = [
   opacity: 0.9;
 }
 
-.app-navbar__drawer-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 1rem 0.75rem;
-}
-
 .app-navbar__drawer-list {
-  padding: 0 0.75rem;
+  padding: 0.75rem 0.75rem 0;
 }
 
 .app-navbar__drawer-item :deep(.v-list-item__overlay) {
